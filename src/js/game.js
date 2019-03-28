@@ -1,4 +1,5 @@
 import { getCards, cardTypes, defeatTypes } from './cards'
+import Score from './score'
 import test from './__tests__/game.test'
 
 const imageSources = {
@@ -11,8 +12,9 @@ const imageSources = {
 let _gameContainer
 let _playerChoiceCard
 let _computerChoiceCard
+let _score
 
-async function getComputerChoice() {
+function getComputerChoice() {
   const cardTypeKeys = Object.keys(cardTypes)
   const randomIndex = Math.floor(Math.random() * 3)
   return cardTypes[cardTypeKeys[randomIndex]]
@@ -34,22 +36,24 @@ function checkWin(playerChoice, computerChoice) {
   return 'COMPUTER'
 }
 
-function renderChoices(playerChoice, computerChoice){
+function renderChoices(playerChoice, computerChoice) {
   _playerChoiceCard.src = imageSources[playerChoice]
   _computerChoiceCard.src = imageSources[computerChoice]
 }
 
 async function handleCardClick(type) {
   const _playerChoice = type
-  const _computerChoice = await getComputerChoice()
+  const _computerChoice = getComputerChoice()
   renderChoices(_playerChoice, _computerChoice)
   const result = checkWin(_playerChoice, _computerChoice)
+  _score.addScore(result)
 }
 
 export default function init({ appId }) {
   _gameContainer = document.getElementById(appId)
   _playerChoiceCard = _gameContainer.querySelector('.player-choice')
   _computerChoiceCard = _gameContainer.querySelector('.computer-choice')
+  _score = new Score(_gameContainer)
 
   // add event listeners to cards
   getCards(_gameContainer).forEach(card => {
@@ -62,6 +66,6 @@ export default function init({ appId }) {
 /**
  *  run tests on debug mode
  */
-if (process.env.NODE_ENV === 'development'){
-  test({checkWin})
+if (process.env.NODE_ENV === 'development') {
+  test({ checkWin })
 }
