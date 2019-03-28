@@ -1,8 +1,16 @@
 import { getCards, cardTypes, defeatTypes } from './cards'
 import test from './__tests__/game.test'
 
+const imageSources = {
+  [cardTypes.ROCK]: 'rock',
+  [cardTypes.PAPER]: 'paper',
+  [cardTypes.SCISSORS]: 'scissors'
+}
+
 // app dom element
 let _gameContainer
+let _playerChoiceCard
+let _computerChoiceCard
 
 async function getComputerChoice() {
   const cardTypeKeys = Object.keys(cardTypes)
@@ -26,14 +34,22 @@ function checkWin(playerChoice, computerChoice) {
   return 'COMPUTER'
 }
 
+function renderChoices(playerChoice, computerChoice){
+  _playerChoiceCard.innerHtml = imageSources[playerChoice]
+  _computerChoiceCard.innerHtml = imageSources[computerChoice]
+}
+
 async function handleCardClick(type) {
   const _playerChoice = type
   const _computerChoice = await getComputerChoice()
+  renderChoices()
   const result = checkWin(_playerChoice, _computerChoice)
 }
 
 export default function init({ appId }) {
   _gameContainer = document.getElementById(appId)
+  _playerChoiceCard = _gameContainer.querySelector('.player-choice')
+  _computerChoiceCard = _gameContainer.querySelector('.computer-choice')
 
   // add event listeners to cards
   getCards(_gameContainer).forEach(card => {

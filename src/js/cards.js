@@ -12,7 +12,7 @@ export const defeatTypes = {
   [cardTypes.SCISSORS]: cardTypes.PAPER
 }
 
-export function getCards(container){
+export function getCards(container) {
   const rockCard = container.querySelector('.rock')
   const paperCard = container.querySelector('.paper')
   const scissorsCard = container.querySelector('.scissors')
@@ -20,15 +20,15 @@ export function getCards(container){
   return [
     {
       element: rockCard,
-      type: cardTypes.ROCK,
+      type: cardTypes.ROCK
     },
     {
       element: paperCard,
-      type: cardTypes.PAPER,
+      type: cardTypes.PAPER
     },
     {
       element: scissorsCard,
-      type: cardTypes.SCISSORS,
+      type: cardTypes.SCISSORS
     }
   ]
 }
@@ -36,6 +36,6 @@ export function getCards(container){
 /**
  *  run tests on debug mode
  */
-if (process.env.NODE_ENV === 'development'){
+if (process.env.NODE_ENV === 'development') {
   test()
 }

@@ -43,6 +43,12 @@ module.exports = {
         toType: 'dir',
         force: true,
       },
+      {
+        from: './src/assets',
+        to: './',
+        toType: 'dir',
+        force: true,
+      },
     ]),
   ],
   optimization: {
