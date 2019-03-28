@@ -1,20 +1,24 @@
-.card-container{
+.card-container {
   display: flex;
   justify-content: space-between;
-  & .card{
+  & .card {
     cursor: pointer;
+    &:hover {
+      box-shadow: 0 4px 8px 0 lime,
+        0 6px 20px 0 lime;
+    }
   }
 }
 
 .card {
-  background-color: #eee;
   width: 200px;
   height: 200px;
-  &.small{
+  border-radius: 5px;
+  &.small {
     width: 100px;
     height: 100px;
   }
-  img{
+  img {
     width: 100%;
   }
 }
