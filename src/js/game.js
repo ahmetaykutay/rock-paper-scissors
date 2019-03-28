@@ -1,4 +1,4 @@
-import { getCards, cardTypes } from './cards'
+import { getCards, cardTypes, defeatTypes } from './cards'
 
 // app dom element
 let _gameContainer
@@ -18,19 +18,19 @@ async function getComputerChoice() {
  * @return {String} ['DRAW' | 'PLAYER' | 'COMPUTER']
  */
 function checkWin() {
-  if (_playerChoice.type === _computerChoice) {
+  if (_playerChoice === _computerChoice) {
     return 'DRAW'
   }
 
-  if (_playerChoice.defeats === _computerChoice) {
+  if (defeatTypes[_playerChoice] === _computerChoice) {
     return 'PLAYER'
   }
 
   return 'COMPUTER'
 }
 
-async function handleCardClick(card, e) {
-  _playerChoice = card
+async function handleCardClick(type, e) {
+  _playerChoice = type
   _computerChoice = await getComputerChoice()
   const result = checkWin()
 }
@@ -41,7 +41,7 @@ export default function init({ appId }) {
   // add event listeners to cards
   getCards(_gameContainer).forEach(card => {
     card.element.addEventListener('click', e => {
-      handleCardClick(card, e)
+      handleCardClick(card.type, e)
     })
   })
 }
