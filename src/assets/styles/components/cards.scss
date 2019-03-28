@@ -1,0 +1,17 @@
+.card-container{
+  display: flex;
+  justify-content: space-between;
+  & .card{
+    cursor: pointer;
+  }
+}
+
+.card {
+  background-color: #eee;
+  width: 200px;
+  height: 200px;
+  &.small{
+    width: 100px;
+    height: 100px;
+  }
+}
