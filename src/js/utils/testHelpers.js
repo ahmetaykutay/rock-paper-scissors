@@ -14,6 +14,12 @@ function checkTestResult(name, result, testCase) {
   }
 }
 
+/**
+ * loops through an array of cases and calls beforeTest with the case 
+ * @param {String} name name of the test
+ * @param {Object} cases {expected: String | Number | Boolean, [test: Function]}
+ * @param {Function} beforeTest function to run before test 
+ */
 export async function runTestFromCases(name, cases, beforeTest) {
   try {
     for (let i = 0; i < cases.length; i++) {
