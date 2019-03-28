@@ -17,8 +17,6 @@ export default class Score {
       this._computerScore += 1
       this._logTextElement.innerHTML = 'Computer wins this round'
     } else{
-      this._playerScore += 1
-      this._computerScore += 1
       this._logTextElement.innerHTML = 'Its a draw'
     }
     this._renderScore()
