@@ -12,15 +12,18 @@ export function getCards(container){
   return [
     {
       element: rockCard,
-      type: cardTypes.ROCK
+      type: cardTypes.ROCK,
+      defeats: cardTypes.SCISSORS
     },
     {
       element: paperCard,
-      type: cardTypes.PAPER
+      type: cardTypes.PAPER,
+      defeats: cardTypes.ROCK
     },
     {
       element: scissorsCard,
-      type: cardTypes.SCISSORS
+      type: cardTypes.SCISSORS,
+      defeats: cardTypes.PAPER
     }
   ]
 }

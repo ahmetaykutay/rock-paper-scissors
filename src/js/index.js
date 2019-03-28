@@ -1,5 +1,5 @@
 import game from './game'
 
-game.init({
+game({
   appId: 'game'
 })
