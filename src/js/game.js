@@ -2,9 +2,9 @@ import { getCards, cardTypes, defeatTypes } from './cards'
 import test from './__tests__/game.test'
 
 const imageSources = {
-  [cardTypes.ROCK]: 'rock',
-  [cardTypes.PAPER]: 'paper',
-  [cardTypes.SCISSORS]: 'scissors'
+  [cardTypes.ROCK]: '/img/rock.png',
+  [cardTypes.PAPER]: '/img/paper.png',
+  [cardTypes.SCISSORS]: '/img/scissors.png'
 }
 
 // app dom element
@@ -35,14 +35,14 @@ function checkWin(playerChoice, computerChoice) {
 }
 
 function renderChoices(playerChoice, computerChoice){
-  _playerChoiceCard.innerHtml = imageSources[playerChoice]
-  _computerChoiceCard.innerHtml = imageSources[computerChoice]
+  _playerChoiceCard.src = imageSources[playerChoice]
+  _computerChoiceCard.src = imageSources[computerChoice]
 }
 
 async function handleCardClick(type) {
   const _playerChoice = type
   const _computerChoice = await getComputerChoice()
-  renderChoices()
+  renderChoices(_playerChoice, _computerChoice)
   const result = checkWin(_playerChoice, _computerChoice)
 }
 
