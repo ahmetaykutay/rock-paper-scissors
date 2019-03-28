@@ -38,12 +38,6 @@ module.exports = {
     }),
     new CopyPlugin([
       {
-        from: './src/img',
-        to: './',
-        toType: 'dir',
-        force: true,
-      },
-      {
         from: './src/pages',
         to: './',
         toType: 'dir',
