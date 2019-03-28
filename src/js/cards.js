@@ -1,3 +1,5 @@
+import test from './__tests__/card.test'
+
 export const cardTypes = {
   PAPER: 'PAPER',
   ROCK: 'ROCK',
@@ -29,4 +31,11 @@ export function getCards(container){
       type: cardTypes.SCISSORS,
     }
   ]
+}
+
+/**
+ *  run tests on debug mode
+ */
+if (process.env.NODE_ENV === 'development'){
+  test()
 }

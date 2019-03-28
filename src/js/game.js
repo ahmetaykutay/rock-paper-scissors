@@ -44,7 +44,7 @@ export default function init({ appId }) {
 }
 
 /**
- * export for testing
+ *  run tests on debug mode
  */
 if (process.env.NODE_ENV === 'development'){
   test({checkWin})

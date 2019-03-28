@@ -1,4 +1,4 @@
-import { runTest, throwTestError } from '../utils/testHelpers'
+import { runTestFromCases } from '../utils/testHelpers'
 import { cardTypes } from '../cards'
 
 function testCheckWin(checkWin) {
@@ -24,16 +24,10 @@ function testCheckWin(checkWin) {
       expected: 'DRAW'
     }
   ]
-  const testName = 'checkWin returns correct winner'
 
-  runTest(testName, async () => {
-    for (let i = 0; i < cases.length; i++) {
-      const result = checkWin(cases[i].playerChoice, cases[i].computerChoice)
-      if (result !== cases[i].expected) {
-        throwTestError(testName, cases[i].expected, result)
-      }
-    }
-  })
+  runTestFromCases('checkWin returns correct winner', cases, c =>
+    checkWin(c.playerChoice, c.computerChoice)
+  )
 }
 
 export default function({ checkWin }) {
